@@ -1,0 +1,22 @@
+:root{
+    --primary: #fff;
+}
+
+.btn {
+    padding: 8px 20px;
+    cursor: pointer;
+}
+
+.btn--primary{
+    background-color: var(--primary);
+    color: #242424;
+
+}
+
+.btn--outline{
+    background-color: transparent;
+}
+
+.btn-medium{
+    padding: 8x 20px;
+}

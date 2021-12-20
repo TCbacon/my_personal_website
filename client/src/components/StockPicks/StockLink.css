@@ -1,0 +1,29 @@
+.stock-links > li {
+    margin: auto;
+    text-align: center;
+    border: 1px solid green;
+    background-color: white;
+    width: 500px;
+}
+
+@media screen and (max-width: 600px){
+    .stock-links > li {
+        width: 200px;
+    }
+}
+
+.stock-link> a {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    text-decoration: none;
+}
+
+.stock-link:hover {
+    background-color: yellow;
+}
+
+.rank-title{
+    padding-left: 20px;
+}

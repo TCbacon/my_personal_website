@@ -1,0 +1,45 @@
+.horizontal-container {
+    margin-left: auto;
+    margin-right: auto;
+    height:25px; 
+    width:300px;
+    position:relative; 
+    overflow:hidden;
+    background-color: white;
+  }
+  
+  #scroll_id:hover{
+    animation-play-state: paused;
+  }
+
+  #scroll_id {
+    position:absolute; 
+    top:0px; 
+    left:0px; 
+    overflow:hidden; 
+    white-space: nowrap;
+    animation: bannermove 20s linear infinite;
+    animation-play-state: running;
+  }
+
+  #scroll_id a:hover {
+    color: greenyellow;
+  }
+
+  #scroll_id > a {
+      padding-left: 25px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+  }
+
+
+  
+  @keyframes bannermove {
+    0% {
+        transform: translate(50%, 0);
+    }
+    100% {
+        transform: translate(-100%, 0);
+    }
+  }
