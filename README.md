@@ -13,7 +13,7 @@ An API key may be needed to retrieve stock data.
 In the src folder you can rename .env.temp.local to .env.local and enter your own API key. You can get an API key at https://www.alphavantage.co/.
 
 ## My Website:
-https://henrystockandcrypto.netlify.app/home
+https://henrycai.netlify.app/
 
 
 
