@@ -1,7 +1,8 @@
 import './Crypto.css';
+import '../GridStyle/GridStyle.css'
 import Axios from "axios";
-import React, { useEffect, useState } from "react";
-import { Wrapper, CryptoTableStyle, Icon, Title, Description, WaringMsg, Image } from './CryptocurrencyPicks.styles';
+import React, { Fragment, useEffect, useState } from "react";
+import { Wrapper, Icon, Title, Description, WaringMsg, Image } from './CryptocurrencyPicks.styles';
 import { isPersistedState } from '../SessionStorageHelper';
 import { DeviceSize } from "../Responsive";
 
@@ -40,7 +41,6 @@ function CryptocurrencyPicks() {
 		}).catch(error => {
 
 			if (error.response) {
-				console.log("res time");
 				setError("Response timed out...");
 			}
 
@@ -56,6 +56,28 @@ function CryptocurrencyPicks() {
 
 		});
 	}, []);
+
+
+	const gridData = () => {
+		return crypto.map((val, id) => {
+			return (
+				<Fragment key={id}>
+					<div className="rank">{val.rank}</div>
+					<div className="logo">
+						<a href={val.websiteUrl} target="_blank" rel="noreferrer">
+							<Icon src={val.icon} alt="logo" width="50px" />
+						</a>
+						<p>{val.name}</p>
+					</div>
+					<div className="symbol">{val.symbol}</div>
+					<div>${val.marketCap.toFixed(2)}</div>
+					<div>${val.price.toFixed(2)}</div>
+					<div>{val.availableSupply.toFixed(2)}</div>
+					<div>{val.volume.toFixed(0)}</div>
+				</Fragment>
+			)
+		})
+	}
 
 
 	const handleResize = () => {
@@ -111,47 +133,16 @@ function CryptocurrencyPicks() {
 				}
 				{isMobile ? <p className="scrollText">Scroll to see more stats...</p> : <p></p>}
 
-				{
-					<CryptoTableStyle>
-
-						<thead>
-							<tr>
-								<th>Rank</th>
-								<th>Name</th>
-								<th>Symbol</th>
-								<th>Market Cap</th>
-								<th>Price</th>
-								<th>Available Supply</th>
-								<th>Volume(24hrs)</th>
-
-							</tr>
-						</thead>
-
-						<tbody>
-							{crypto.map((val, id) => {
-								return (
-									<tr key={id} id={id}>
-										<td className="rank">{val.rank}</td>
-										<td className="logo">
-											<a href={val.websiteUrl} target="_blank" rel="noreferrer">
-												<Icon src={val.icon} alt="logo" width="50px" />
-											</a>
-											<p>{val.name}</p>
-										</td>
-										<td className="symbol">{val.symbol}</td>
-										<td>${val.marketCap}</td>
-										<td>${val.price.toFixed(2)}</td>
-										<td>{val.availableSupply}</td>
-										<td>{val.volume.toFixed(0)}</td>
-									</tr>
-
-								)
-							})}
-
-						</tbody>
-
-					</CryptoTableStyle>
-				}
+				<div className="crypto-grid">
+					<div className="header">Rank</div>
+					<div className="header">Name</div>
+					<div className="header">Symbol</div>
+					<div className="header">Market Cap</div>
+					<div className="header">Price</div>
+					<div className="header">Available Supply</div>
+					<div className="header">Volume(24hrs)</div>
+					{gridData()}
+				</div>
 
 				<Description>
 					<h1>My Favorite Cryptocurrency</h1>

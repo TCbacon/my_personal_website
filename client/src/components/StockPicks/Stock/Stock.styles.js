@@ -30,33 +30,10 @@ export const ErrorTitle = styled.div`
     text-align: center;
 `;
 
-export const TableStyle = styled.table`
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    margin-bottom: 30px;
-    font-size: 18px;
-
-    text-align: center;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 90%;
-    background: white;
-
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 5px;
-    }
-
-    @media (max-width: ${DeviceSize.tablet}px){
-        font-size: 10px;
-    }
-`;
-
 export const PlotStyle = styled.div`
 
     text-align: center;
+    margin-top: 20px;
 
     .plot{
     display: block;

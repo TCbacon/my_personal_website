@@ -11,7 +11,6 @@ export const Wrapper = styled.div`
 
 export const OptionsLink = styled.a`
     color: white;
-    font-size: 20px;
 
     :hover{
         color: yellow;

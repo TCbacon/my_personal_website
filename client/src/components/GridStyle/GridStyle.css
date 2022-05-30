@@ -1,0 +1,32 @@
+:root{
+    --r: 119;
+    --g: 244;
+    --b: 214;
+    --bg-color: rgb(var(--r), var(--g), var(--b));
+}
+
+.stock-grid{
+    display: grid; 
+    grid-template-columns: repeat(6, 1fr);
+    align-content: center;
+    width: 100%;
+    row-gap: 1px;
+    background: var(--bg-color);
+    gap: 1em;   
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+.crypto-grid{
+    display: grid; 
+    grid-template-columns: repeat(7, 1fr);
+    align-content: center;
+    width: 100%;
+    --bg-color: linear-gradient(180deg, purple 40%, blue 80%);
+    background: var(--bg-color);
+    gap: 1em;   
+    overflow-x: auto;
+}
+
+.header { font-size: 1.2em; font-weight: 600; color: #ffffff; }
+    

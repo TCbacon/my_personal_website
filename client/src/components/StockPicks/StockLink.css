@@ -1,15 +1,18 @@
+:root{
+    counter-reset: headings;
+}
+
 .stock-links > li {
+    counter-increment: headings;
     margin: auto;
     text-align: center;
     border: 1px solid green;
     background-color: white;
-    width: 500px;
+    width: clamp(200px, 100%, 600px);
 }
 
-@media screen and (max-width: 600px){
-    .stock-links > li {
-        width: 200px;
-    }
+.stock-links > li {
+    content: counter(headings);
 }
 
 .stock-link> a {

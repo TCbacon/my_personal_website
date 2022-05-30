@@ -25,19 +25,6 @@ export const CryptoTableStyle = styled.table`
         overflow-x: auto;
         white-space: nowrap;
 }
-
-
-thead{
-    background-color: rgb(44, 44, 44);
-    color: white;
-    text-align: center;
- 
-}
-
-tbody > tr{
-    color: white;
-    text-align: center;
-}
 `;
 
 export const Icon = styled.img`

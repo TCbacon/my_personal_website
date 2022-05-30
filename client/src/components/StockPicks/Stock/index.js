@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Plot from 'react-plotly.js';
-import { Wrapper, Title, PlotStyle, TableStyle, OptionsLink, BottomOptionStrategies, ErrorTitle, ScrollButton } from './Stock.styles';
+import { Wrapper, Title, PlotStyle, OptionsLink, BottomOptionStrategies, ErrorTitle, ScrollButton } from './Stock.styles';
 import { isPersistedState } from "../../SessionStorageHelper";
 import { DeviceSize } from "../../Responsive";
 import { Link } from 'react-router-dom';
+import { stockLinks } from './StockScrollLinks';
 import './HorizontalStocks.css';
+import '../../GridStyle/GridStyle.css';
 
 class Stock extends React.Component {
 
@@ -80,6 +82,24 @@ class Stock extends React.Component {
         }
     }
 
+    gridData() {
+        return this.state.stock_list.map((elem, idx) => {
+
+            let { dateRefresh, openPrice, highPrice, lowPrice, closePrice, volume } = elem;
+            volume = +volume * 1000;
+            return (
+                <Fragment key={idx}>
+                    <div>{dateRefresh}</div>
+                    <div>{openPrice}</div>
+                    <div>{highPrice}</div>
+                    <div>{lowPrice}</div>
+                    <div>{closePrice}</div>
+                    <div>{volume}</div>
+                </Fragment>
+            )
+        })
+    }
+
 
     async fetchStock() {
 
@@ -93,11 +113,11 @@ class Stock extends React.Component {
         let isLatestDate = false;
         let pathList = this.props.location.pathname.split("/");
         let symbol = pathList[pathList.length - 1].toUpperCase();
-
+        
         if (!this.props.location.pathname) {
             pointerToThis.setState({
                 isLoading: false,
-                error_msg: "This Stock is not in my list."
+                error_msg: "This stock is not in the list."
             })
             return;
         }
@@ -212,71 +232,47 @@ class Stock extends React.Component {
 
                         <div className="horizontal-container">
                             <div className="links" id='scroll_id'>
-                                <Link to={{ pathname: "/stock/SPY", state: { stock_name: "S&P500" } }} onClick={this.refreshPage}>S&P500</Link>
-                                <Link to={{ pathname: "/stock/TSLA", state: { stock_name: "Tesla" } }} onClick={this.refreshPage}>Tesla</Link>
-                                <Link to={{ pathname: "/stock/AMZN", state: { stock_name: "Amazon" } }} onClick={this.refreshPage}>Amazon</Link>
-                                <Link to={{ pathname: "/stock/AMC", state: { stock_name: "AMC Entertainment" } }} onClick={this.refreshPage}>AMC Entertainment</Link>
-                                <Link to={{ pathname: "/stock/BAC", state: { stock_name: "Bank of America" } }} onClick={this.refreshPage}>Bank of America</Link>
-                                <Link to={{ pathname: "/stock/PLAY", state: { stock_name: "Dave & Buster's" } }} onClick={this.refreshPage}>Dave & Buster's</Link>
-                                <Link to={{ pathname: "/stock/CCL", state: { stock_name: "Carnival" } }} onClick={this.refreshPage}>Carnival</Link>
-                                <Link to={{ pathname: "/stock/SONY", state: { stock_name: "Sony" } }} onClick={this.refreshPage}>Sony</Link>
-                                <Link to={{ pathname: "/stock/GOOG", state: { stock_name: "Google" } }} onClick={this.refreshPage}>Google</Link>
-                                <Link to={{ pathname: "/stock/U", state: { stock_name: "Unity" } }} onClick={this.refreshPage}>Unity</Link>
+                                {
+                                    stockLinks().map((link, idx) => {
+                                        const { ticker, state } = link;
+                                        return (
+                                            <Link key={idx} to={{ pathname: `/stock/${ticker}`, state: { stock_name: state.stock_name } }} onClick={this.refreshPage}>{state.stock_name}</Link>
+                                        )
+                                    })}
                             </div>
                         </div>
 
                         <ScrollButton className={this.state.ispaused === 'Pause' ? "pause-btn" : 'resume-btn'} onClick={this.stockScrollHandler}>{this.state.ispaused}</ScrollButton>
                         <PlotStyle plotWidth={this.state.plotWidth}>
-                            {
-                                <div className="plot">
 
-                                    <Title><h2>Ticker: {this.state.stock_list[0].ticker}</h2></Title>
+                            <div>
+                                <Title><h2>Ticker: {this.state.stock_list.length > 0 ? this.state.stock_list[0].ticker : 'undefined'}</h2></Title>
 
-                                    <TableStyle>
-                                        <thead>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Open</th>
-                                                <th>High</th>
-                                                <th>Low</th>
-                                                <th>Close</th>
-                                                <th>Volume</th>
-                                            </tr>
-
-                                        </thead>
-
-                                        {
-                                            <tbody>
-                                                <tr>
-                                                    <td>{this.state.stock_list[0].dateRefresh}</td>
-                                                    <td>{this.state.stock_list[0].openPrice}</td>
-                                                    <td>{this.state.stock_list[0].highPrice}</td>
-                                                    <td>{this.state.stock_list[0].lowPrice}</td>
-                                                    <td>{this.state.stock_list[0].closePrice}</td>
-                                                    <td>{this.state.stock_list[0].volume}</td>
-                                                </tr>
-
-                                            </tbody>
-
-                                        }
-                                    </TableStyle>
-
-
-                                    <Plot
-                                        data={[
-                                            {
-                                                x: this.state.stock_list[0].date,
-                                                y: this.state.stock_list[0].price_list,
-                                                type: 'scatter',
-                                                mode: 'lines+markers',
-                                                marker: { color: 'green' },
-                                            }
-                                        ]}
-                                        layout={{ width: this.state.plotWidth, height: this.state.plotHeight, title: `${this.props.location.state ? this.props.location.state.stock_name : this.state.stock_list[0].ticker} Plot` }}
-                                    />
-
+                                <div className='stock-grid'>
+                                    <div className='header'>Date</div>
+                                    <div className='header'>Open</div>
+                                    <div className='header'>High</div>
+                                    <div className='header'>Low</div>
+                                    <div className='header'>Close</div>
+                                    <div className='header'>Volume</div>
+                                    {this.gridData()}
                                 </div>
-                            }
+
+                                <Plot
+                                    data={[
+                                        {
+                                            x: this.state.stock_list[0].date,
+                                            y: this.state.stock_list[0].price_list,
+                                            type: 'scatter',
+                                            mode: 'lines+markers',
+                                            marker: { color: 'green' },
+                                        }
+                                    ]}
+                                    layout={{ width: this.state.plotWidth, height: this.state.plotHeight, title: `${this.props.location.state ? this.props.location.state.stock_name : this.state.stock_list[0].ticker} Plot` }}
+                                />
+
+                            </div>
+
                         </PlotStyle>
 
 

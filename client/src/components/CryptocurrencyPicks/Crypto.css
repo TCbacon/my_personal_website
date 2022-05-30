@@ -1,32 +1,28 @@
+html{
+    background-color: teal;
+}
+  
+.rank{
+    font-weight: bold;
+}
+
+.logo{
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 10%;
+    gap: 10px;
+}
+.symbol{
+    color: white;
+    text-align: center;
+}
+
+.scrollText{
+    color: white;
+}
+
+.cryptoErrorTitle{
+    color: #FF7F7F;
+}
 
 
-    html{
-        background-color: teal;
-    }
-        
-    .rank{
-        font-weight: bold;
-    }
-
-    .logo{
-        display: flex;
-        justify-content: flex-start;
-        padding-left: 10%;
-        gap: 10px;
-    }
-    .symbol{
-        color: white;
-        text-align: center;
-    }
-
-    .scrollText{
-        color: white;
-    }
-
-    .cryptoErrorTitle{
-        color: #FF7F7F;
-    }
-
-
-
-    
