@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+html{
+  margin: 0;
+  padding: 0;
+  background: url("img/mainbg.jpg") teal;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+  
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

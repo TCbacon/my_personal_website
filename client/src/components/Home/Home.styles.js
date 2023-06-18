@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 export const InfoBox = styled.div`
     text-align: center;
     box-sizing: border-box;
-
+    border-radius: 20px;
     background-color: #C3CECC;
     display: block;
 

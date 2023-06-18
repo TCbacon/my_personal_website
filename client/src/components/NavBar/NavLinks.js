@@ -39,7 +39,8 @@ const Link = styled.a`
     font-size: 20px;
 
     :hover{
-        color: #A0EE45;
+        color: #6FCB9F;
+        transform: scale(1.2);
     }
 
 `;

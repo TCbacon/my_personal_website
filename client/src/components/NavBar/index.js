@@ -12,7 +12,8 @@ const NavBarContainer = styled.div`
     box-shadow: 0 1px 3px rgba(15,15,15,0.13); 
     display: flex;
     align-items: center;
-    background-color:silver;
+    background-color:#e4e4e4;
+    border-radius: 20px;
 `
 
 const LeftSection = styled.div`
