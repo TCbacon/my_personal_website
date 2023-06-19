@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
     text-align: center;
+    color: white;
 `;
   
 export const HomeLink = styled.a`

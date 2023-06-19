@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import Plot from 'react-plotly.js';
-import { Wrapper, Title, PlotStyle, OptionsLink, BottomOptionStrategies, ErrorTitle, ScrollButton } from './Stock.styles';
+import { Wrapper, Title, PlotStyle, OptionsLink, BottomOptionStrategies, ErrorTitle, ScrollButton} from './Stock.styles';
 import { isPersistedState } from "../../SessionStorageHelper";
-import { DeviceSize } from "../../Responsive";
+import { DeviceSize, PlotSize } from "../../Responsive";
 import { Link } from 'react-router-dom';
 import { stockLinks } from './StockScrollLinks';
 import './HorizontalStocks.css';
@@ -18,8 +18,8 @@ class Stock extends React.Component {
             stock_list: [],
             error_msg: "",
             isLoading: true,
-            plotWidth: window.innerWidth <= DeviceSize.tablet ? 320 : 670,
-            plotHeight: window.innerWidth <= DeviceSize.tablet ? 250 : 440,
+            plotWidth: window.innerWidth <= DeviceSize.tablet ? PlotSize.tabletWidth : PlotSize.desktopWidth,
+            plotHeight: window.innerWidth <= DeviceSize.tablet ? PlotSize.tabletHeight : PlotSize.desktopHeight,
             isMobileStock: false,
             ispaused: "Pause"
         }
@@ -45,15 +45,15 @@ class Stock extends React.Component {
     resize() {
         if (window.innerWidth <= DeviceSize.tablet) {
             this.setState({
-                plotWidth: 320,
-                plotHeight: 250
+                plotWidth: PlotSize.tabletWidth,
+                plotHeight: PlotSize.tabletHeight
             });
         }
 
         else {
             this.setState({
-                plotWidth: 670,
-                plotHeight: 440
+                plotWidth: PlotSize.desktopWidth,
+                plotHeight: PlotSize.desktopHeight
             });
         }
     }
@@ -243,9 +243,9 @@ class Stock extends React.Component {
                         </div>
 
                         <ScrollButton className={this.state.ispaused === 'Pause' ? "pause-btn" : 'resume-btn'} onClick={this.stockScrollHandler}>{this.state.ispaused}</ScrollButton>
-                        <PlotStyle plotWidth={this.state.plotWidth}>
+                    
 
-                            <div>
+                    <PlotStyle plotWidth={this.state.plotWidth}>
                                 <Title><h2>Ticker: {this.state.stock_list.length > 0 ? this.state.stock_list[0].ticker : 'undefined'}</h2></Title>
 
                                 <div className='stock-grid'>
@@ -271,15 +271,13 @@ class Stock extends React.Component {
                                     layout={{ width: this.state.plotWidth, height: this.state.plotHeight, title: `${this.props.location.state ? this.props.location.state.stock_name : this.state.stock_list[0].ticker} Plot` }}
                                 />
 
-                            </div>
-
                         </PlotStyle>
 
 
                         <BottomOptionStrategies>
                             <h2>My Favorite Options Strategy</h2>
                             <OptionsLink href="/sellputs">Selling Puts</OptionsLink>
-                        </BottomOptionStrategies>
+                        </BottomOptionStrategies>                       
 
                     </Wrapper>
         )

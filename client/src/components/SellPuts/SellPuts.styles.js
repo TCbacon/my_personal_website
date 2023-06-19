@@ -4,7 +4,7 @@ import { DeviceSize } from '../Responsive';
 export const Wrapper = styled.div`
 text-align: center;
 width: 100%;
-`;  
+`;
 
 
 export const DisclaimerBox = styled.div`
@@ -15,6 +15,8 @@ export const DisclaimerBox = styled.div`
     width: 100%;
     background-color: #A0A0A0;
     font-size: 15px;
+    border-radius: 10px;
+    padding-bottom: 1px;
 `;
 
 
@@ -24,6 +26,7 @@ box-sizing: border-box;
 background-color: #C3CECC;
 display: block;
 font-size: 20px;
+border-radius: 10px;
 `;
 
 
@@ -31,11 +34,13 @@ export const PutsellDesc = styled.p`
 margin-left: 10px;
 line-height: 2;
 font-size: 18px;
+
 `;
 
 export const Image = styled.img`
 width: 300px;
 height 600px;
+border-radius: 10px;
 
 @media (max-width: ${DeviceSize.mobile}px){
     width: 250px;
@@ -47,6 +52,7 @@ export const ImageWrapper = styled.div`
 margin-left: 10px;
 text-align: left;
 display: flex;
+
 
 @media (max-width: ${DeviceSize.mobile}px){
     display: block;
@@ -89,6 +95,7 @@ export const VideoWrapper = styled.div`
     {
         color: #69FF69;
     }
+    border-radius: 10px;
     margin-top: 20px;
     padding-top: 50px;
     padding-bottom: 50px;

@@ -5,3 +5,10 @@ export const DeviceSize = {
   laptop: 1324,
   desktop: 2024,
 };
+
+export const PlotSize = {
+  tabletWidth: 320,
+  tabletHeight: 250,
+  desktopWidth: 670,
+  desktopHeight: 440,
+}

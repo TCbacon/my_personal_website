@@ -11,6 +11,7 @@ export const Wrapper = styled.div`
 
 export const OptionsLink = styled.a`
     color: white;
+    font-size: 20px;
 
     :hover{
         color: yellow;
@@ -22,13 +23,14 @@ export const OptionsLink = styled.a`
 `;
 
 export const BottomOptionStrategies = styled.div`
-    width: 50%;
     border: 3px solid #4CAF50;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
     text-align:center;
     background-color: #ACACAC;
     color: #94FBBB;
+    border-radius: 10px;
 
     @media only screen and (max-width: ${DeviceSize.tablet}) {
         h3{
@@ -40,10 +42,11 @@ export const BottomOptionStrategies = styled.div`
 
 export const Description = styled.div`
     padding-left: 5px;
-    padding-right:
+    padding-right:5px;
     text-align: left;
     background-color: #94FBBB;
     font-size: 18px;
+    border-radius: 10px;
 `;
 
 export const DescTitle = styled.h1`
@@ -52,11 +55,11 @@ export const DescTitle = styled.h1`
 
 export const WaringMsgBox = styled.div`
     color: yellow;
-    left: 0;
     margin-top: 20px;
     text-align: center;
-    width: 100%;
     background-color: #A0A0A0;
+    border-radius: 10px;
+    padding-bottom: 1px;
 `;
 
 export const StockLinksBox = styled.div`
@@ -64,4 +67,5 @@ export const StockLinksBox = styled.div`
     border: 3px solid #4CAF50;
     background-color: #A0A0A0;
     padding-right: 20px; 
+    border-radius: 10px;
 `;
