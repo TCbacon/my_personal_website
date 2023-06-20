@@ -1,4 +1,4 @@
-# react_personal_website-template
+# Personal Website
 My personal website source code. I have replaced most of the text with lorem ipsum.
 
 ## Run Program:

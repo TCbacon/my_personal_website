@@ -1,12 +1,12 @@
 import './Crypto.css';
-import '../GridStyle/GridStyle.css'
+import '../GridStyle/GridStyle.css';
 import Axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { Wrapper, CryptoTable, Icon, Title, Description, WaringMsg, Image} from './CryptocurrencyPicks.styles';
+import { Wrapper, CryptoTable, Icon, Title, Description, WaringMsg, Image } from './CryptocurrencyPicks.styles';
 import { isPersistedState } from '../SessionStorageHelper';
 import { DeviceSize } from "../Responsive";
 import { ThreeD } from '../ThreeD';
-import {SphereGeometry, MeshStandardMaterial, TextureLoader} from 'three';
+import { SphereGeometry, MeshStandardMaterial, TextureLoader } from 'three';
 
 
 function CryptocurrencyPicks() {
@@ -18,7 +18,7 @@ function CryptocurrencyPicks() {
 
 
 	let cryptoNameSet = new Set(["Bitcoin", "Dogecoin", "Ethereum", "Bitcoin Cash", "Litecoin"]);
-	const API = 'https://api.coinstats.app/public/v1/coins?skip=0&limit=100¤cy=INR'
+	const API = 'https://api.coinstats.app/public/v1/coins?skip=0&limit=100¤cy=INR';
 
 	useEffect(() => {
 		const cryptoSessionState = isPersistedState("cryptodata");
@@ -78,9 +78,9 @@ function CryptocurrencyPicks() {
 					<div>{val.availableSupply.toFixed(2)}</div>
 					<div>{val.volume.toFixed(0)}</div>
 				</Fragment>
-			)
-		})
-	}
+			);
+		});
+	};
 
 
 	const handleResize = () => {
@@ -136,13 +136,13 @@ function CryptocurrencyPicks() {
 
 				<CryptoTable>
 					<div className="header">Rank</div>
-						<div className="header">Name</div>
-						<div className="header">Symbol</div>
-						<div className="header">Market Cap</div>
-						<div className="header">Price</div>
-						<div className="header">Available Supply</div>
-						<div className="header">Volume(24hrs)</div>
-						{gridData()}
+					<div className="header">Name</div>
+					<div className="header">Symbol</div>
+					<div className="header">Market Cap</div>
+					<div className="header">Price</div>
+					<div className="header">Available Supply</div>
+					<div className="header">Volume(24hrs)</div>
+					{gridData()}
 				</CryptoTable>
 
 				<Description>
@@ -161,7 +161,7 @@ function CryptocurrencyPicks() {
 					<Image src='https://fakeimg.pl/300x300/?text=crypto img' alt="crypto-img" />
 					<ThreeD
 						geo={new SphereGeometry(5, 100, 100, 5)}
-						mat={new MeshStandardMaterial({map: new TextureLoader().load("https://fakeimg.pl/300x300/?text=crypto img"), color: 0xFD8EBB })}
+						mat={new MeshStandardMaterial({ map: new TextureLoader().load("https://fakeimg.pl/300x300/?text=crypto img"), color: 0xFD8EBB })}
 						duration={16000}
 						yRot={0.02}
 						width={200}

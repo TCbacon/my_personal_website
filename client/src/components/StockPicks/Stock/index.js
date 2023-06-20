@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import Plot from 'react-plotly.js';
-import { Wrapper, Title, PlotStyle, OptionsLink, BottomOptionStrategies, ErrorTitle, ScrollButton} from './Stock.styles';
+import { Wrapper, Title, PlotStyle, OptionsLink, BottomOptionStrategies, ErrorTitle, ScrollButton } from './Stock.styles';
 import { isPersistedState } from "../../SessionStorageHelper";
 import { DeviceSize, PlotSize } from "../../Responsive";
 import { Link } from 'react-router-dom';
@@ -22,7 +22,7 @@ class Stock extends React.Component {
             plotHeight: window.innerWidth <= DeviceSize.tablet ? PlotSize.tabletHeight : PlotSize.desktopHeight,
             isMobileStock: false,
             ispaused: "Pause"
-        }
+        };
 
         this.resize = this.resize.bind(this);
         this.stockScrollHandler = this.stockScrollHandler.bind(this);
@@ -96,8 +96,8 @@ class Stock extends React.Component {
                     <div>{closePrice}</div>
                     <div>{volume}</div>
                 </Fragment>
-            )
-        })
+            );
+        });
     }
 
 
@@ -113,12 +113,12 @@ class Stock extends React.Component {
         let isLatestDate = false;
         let pathList = this.props.location.pathname.split("/");
         let symbol = pathList[pathList.length - 1].toUpperCase();
-        
+
         if (!this.props.location.pathname) {
             pointerToThis.setState({
                 isLoading: false,
                 error_msg: "This stock is not in the list."
-            })
+            });
             return;
         }
 
@@ -192,7 +192,7 @@ class Stock extends React.Component {
         pointerToThis.setState({
             stock_list: temp_l,
             isLoading: false,
-        })
+        });
     }
 
 
@@ -237,39 +237,39 @@ class Stock extends React.Component {
                                         const { ticker, state } = link;
                                         return (
                                             <Link key={idx} to={{ pathname: `/stock/${ticker}`, state: { stock_name: state.stock_name } }} onClick={this.refreshPage}>{state.stock_name}</Link>
-                                        )
+                                        );
                                     })}
                             </div>
                         </div>
 
                         <ScrollButton className={this.state.ispaused === 'Pause' ? "pause-btn" : 'resume-btn'} onClick={this.stockScrollHandler}>{this.state.ispaused}</ScrollButton>
-                    
 
-                    <PlotStyle plotWidth={this.state.plotWidth}>
-                                <Title><h2>Ticker: {this.state.stock_list.length > 0 ? this.state.stock_list[0].ticker : 'undefined'}</h2></Title>
 
-                                <div className='stock-grid'>
-                                    <div className='header'>Date</div>
-                                    <div className='header'>Open</div>
-                                    <div className='header'>High</div>
-                                    <div className='header'>Low</div>
-                                    <div className='header'>Close</div>
-                                    <div className='header'>Volume</div>
-                                    {this.gridData()}
-                                </div>
+                        <PlotStyle plotWidth={this.state.plotWidth}>
+                            <Title><h2>Ticker: {this.state.stock_list.length > 0 ? this.state.stock_list[0].ticker : 'undefined'}</h2></Title>
 
-                                <Plot
-                                    data={[
-                                        {
-                                            x: this.state.stock_list[0].date,
-                                            y: this.state.stock_list[0].price_list,
-                                            type: 'scatter',
-                                            mode: 'lines+markers',
-                                            marker: { color: 'green' },
-                                        }
-                                    ]}
-                                    layout={{ width: this.state.plotWidth, height: this.state.plotHeight, title: `${this.props.location.state ? this.props.location.state.stock_name : this.state.stock_list[0].ticker} Plot` }}
-                                />
+                            <div className='stock-grid'>
+                                <div className='header'>Date</div>
+                                <div className='header'>Open</div>
+                                <div className='header'>High</div>
+                                <div className='header'>Low</div>
+                                <div className='header'>Close</div>
+                                <div className='header'>Volume</div>
+                                {this.gridData()}
+                            </div>
+
+                            <Plot
+                                data={[
+                                    {
+                                        x: this.state.stock_list[0].date,
+                                        y: this.state.stock_list[0].price_list,
+                                        type: 'scatter',
+                                        mode: 'lines+markers',
+                                        marker: { color: 'green' },
+                                    }
+                                ]}
+                                layout={{ width: this.state.plotWidth, height: this.state.plotHeight, title: `${this.props.location.state ? this.props.location.state.stock_name : this.state.stock_list[0].ticker} Plot` }}
+                            />
 
                         </PlotStyle>
 
@@ -277,10 +277,10 @@ class Stock extends React.Component {
                         <BottomOptionStrategies>
                             <h2>My Favorite Options Strategy</h2>
                             <OptionsLink href="/sellputs">Selling Puts</OptionsLink>
-                        </BottomOptionStrategies>                       
+                        </BottomOptionStrategies>
 
                     </Wrapper>
-        )
+        );
     }
 }
 export default Stock;

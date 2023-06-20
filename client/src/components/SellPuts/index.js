@@ -11,7 +11,7 @@ export const SellPuts = () => {
     const handleResizeVideo = () => {
         setVidWidth(window.innerWidth <= DeviceSize.tablet ? 300 : 600);
         setVidHeight(window.innerWidth <= DeviceSize.tablet ? 250 : 400);
-    }
+    };
 
     //called once on mount
     useEffect(() => {
@@ -78,5 +78,5 @@ export const SellPuts = () => {
             </VideoWrapper>
 
         </Wrapper>
-    )
-}
+    );
+};

@@ -34,7 +34,7 @@ const StockPicks = () => {
           }}>S&P500</Link></li>
           < li className="stock-link"><Link to={{ pathname: "/stock/TSLA", state: { stock_name: "Tesla" } }}>Tesla</Link></li>
           <li className="stock-link"><Link to={{ pathname: "/stock/AMZN", state: { stock_name: "Amazon" } }}>Amazon</Link></li>
-          <li className="stock-link"><Link to={{ pathname: "/stock/AMC", state: { stock_name: "AMC" } }}>AMC</Link></li>
+          <li className="stock-link"><Link to={{ pathname: "/stock/MSFT", state: { stock_name: "Microsoft" } }}>Microsoft</Link></li>
           < li className="stock-link" > <Link to={{ pathname: "/stock/BAC", state: { stock_name: "Bank of America" } }}>Bank of America</Link></li>
           <li className="stock-link"><Link to={{ pathname: "/stock/PLAY", state: { stock_name: "Dave & Buster's" } }}>Dave & Buster's</Link></li>
           < li className="stock-link" > <Link to={{ pathname: "/stock/CCL", state: { stock_name: "Carnival" } }}>Carnival</Link></li>
@@ -65,7 +65,7 @@ const StockPicks = () => {
       </BottomOptionStrategies>
 
     </Wrapper>
-  )
-}
+  );
+};
 
 export default StockPicks;
