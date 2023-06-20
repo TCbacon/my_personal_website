@@ -11,9 +11,9 @@
     align-content: center;
     width: 100%;
     background: white;
-    overflow-x: auto;
     margin-bottom: 20px;
     font-size: 13px;
+    gap: 0.1em;
 }
 
 .stock-grid > * {
@@ -29,8 +29,13 @@
     --bg-color: linear-gradient(180deg, purple 40%, blue 80%);
     background: var(--bg-color);
     gap: 1em;   
-    overflow-x: auto;
 }
 
-.header { font-size: 1.2em; font-weight: 600;}
+.header {
+    font-size: 12px;
+    height: 20px;
+    font-weight: 600; 
+    color: white; 
+    background-color: black;
+}
     

@@ -9,8 +9,7 @@ const StockPicks = () => {
     <Wrapper>
       <WaringMsgBox>
         <h1>Disclaimer</h1>
-        <p>Investing in the stock market is risky. I am not a financial advisor. The information I share
-          is based on my own experiences.
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </p>
       </WaringMsgBox>
       <Description>
@@ -28,7 +27,7 @@ const StockPicks = () => {
       </Description>
 
       <StockLinksBox>
-        <h1 className="rank-title">My Stocks Rank</h1>
+        <h1 className="rank-title">🏆My Stocks Rank🏆</h1>
         <ol className="stock-links">
           <li className="stock-link"><Link to={{
             pathname: "/stock/SPY", state: { stock_name: "S&P500" }

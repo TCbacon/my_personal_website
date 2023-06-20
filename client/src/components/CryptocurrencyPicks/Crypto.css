@@ -4,6 +4,8 @@ html{
   
 .rank{
     font-weight: bold;
+    color: yellow;
+    font-size: 15px;
 }
 
 .logo{
@@ -11,10 +13,6 @@ html{
     justify-content: flex-start;
     padding-left: 10%;
     gap: 10px;
-}
-.symbol{
-    color: white;
-    text-align: center;
 }
 
 .scrollText{

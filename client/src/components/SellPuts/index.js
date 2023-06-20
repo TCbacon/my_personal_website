@@ -26,8 +26,7 @@ export const SellPuts = () => {
         <Wrapper>
             <DisclaimerBox>
                 <h2>Disclaimer</h2>
-                <p>Investing in the stock market is risky. I am not a financial advisor. The information I share
-                    is based on my own experiences.
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </p>
 
             </DisclaimerBox>

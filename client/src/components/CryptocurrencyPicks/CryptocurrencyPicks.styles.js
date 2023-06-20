@@ -8,23 +8,25 @@ export const Wrapper = styled.div`
     text-align: center;
 `;
 
-export const CryptoTableStyle = styled.table`
+export const CryptoTable = styled.div`
     margin-left: auto;
     margin-right: auto;   
     height: 500px;
     background: linear-gradient(180deg, purple 40%, blue 80%);
-    border-collapse: separate;
-    border-spacing: 0.2em 1em;
     padding-left: 5px;
     padding-right: 5px;
     width: 100%;
+    border-radius:10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 2px;
+    color: white;
         
     @media only screen and (max-width: ${DeviceSize.mobile}px){
-        display: inline-block;
         width: 100%;
         overflow-x: auto;
-        white-space: nowrap;
-}
+        white-space: nowrap;   
+    }
 `;
 
 export const Icon = styled.img`
@@ -50,6 +52,10 @@ export const Description = styled.div`
     text-align: center;
     background-color:#D8B2D8;
     font-size: 18px;
+    border-radius:20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 2px;
 
     p{
         text-align: left;
@@ -63,6 +69,7 @@ export const WaringMsg = styled.div`
     text-align: center;
     width: 100%;
     background-color: #A0A0A0;
+    border-radius: 20px;
 
     @media all and (max-width:${DeviceSize.mobile}px){
         left: 0;
@@ -75,6 +82,7 @@ export const WaringMsg = styled.div`
 export const Image = styled.img`
     height:400px;
     width: 480px;
+    border-radius:20px;
     @media only screen and (max-width:900px){
         height:130px;
         width: 200px;

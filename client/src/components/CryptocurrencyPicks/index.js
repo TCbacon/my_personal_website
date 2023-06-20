@@ -2,9 +2,12 @@ import './Crypto.css';
 import '../GridStyle/GridStyle.css'
 import Axios from "axios";
 import React, { Fragment, useEffect, useState } from "react";
-import { Wrapper, Icon, Title, Description, WaringMsg, Image } from './CryptocurrencyPicks.styles';
+import { Wrapper, CryptoTable, Icon, Title, Description, WaringMsg, Image} from './CryptocurrencyPicks.styles';
 import { isPersistedState } from '../SessionStorageHelper';
 import { DeviceSize } from "../Responsive";
+import { ThreeD } from '../ThreeD';
+import {SphereGeometry, MeshStandardMaterial, TextureLoader} from 'three';
+
 
 function CryptocurrencyPicks() {
 
@@ -62,7 +65,7 @@ function CryptocurrencyPicks() {
 		return crypto.map((val, id) => {
 			return (
 				<Fragment key={id}>
-					<div className="rank">{val.rank}</div>
+					<div className="rank">{id + 1}</div>
 					<div className="logo">
 						<a href={val.websiteUrl} target="_blank" rel="noreferrer">
 							<Icon src={val.icon} alt="logo" width="50px" />
@@ -104,9 +107,7 @@ function CryptocurrencyPicks() {
 			<Wrapper>
 				<WaringMsg>
 					<h1>Disclaimer</h1>
-					<p>Investing in crypto is extremely risky. Prices are unpredictable from one to the next. I am not
-						a financial advisor. The information
-						I share is based on my own experiences.
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					</p>
 				</WaringMsg>
 
@@ -131,18 +132,18 @@ function CryptocurrencyPicks() {
 						<h1 className="cryptoTitle">My Top Cryptos </h1>
 					</Title>
 				}
-				{isMobile ? <p className="scrollText">Scroll to see more stats...</p> : <p></p>}
+				{isMobile ? <p className="scrollText">Scroll → to see more stats...</p> : <p></p>}
 
-				<div className="crypto-grid">
+				<CryptoTable>
 					<div className="header">Rank</div>
-					<div className="header">Name</div>
-					<div className="header">Symbol</div>
-					<div className="header">Market Cap</div>
-					<div className="header">Price</div>
-					<div className="header">Available Supply</div>
-					<div className="header">Volume(24hrs)</div>
-					{gridData()}
-				</div>
+						<div className="header">Name</div>
+						<div className="header">Symbol</div>
+						<div className="header">Market Cap</div>
+						<div className="header">Price</div>
+						<div className="header">Available Supply</div>
+						<div className="header">Volume(24hrs)</div>
+						{gridData()}
+				</CryptoTable>
 
 				<Description>
 					<h1>My Favorite Cryptocurrency</h1>
@@ -158,6 +159,14 @@ function CryptocurrencyPicks() {
 						Maecenas sed leo sollicitudin, mollis dui convallis, interdum elit. Donec scelerisque felis congue, ultricies ante efficitur, tempor sapien. Donec euismod lectus at ultrices mattis. Praesent ut dui arcu. Praesent viverra, eros a imperdiet consectetur, lectus magna efficitur purus, ut tincidunt lorem mi sit amet justo. Aenean eget interdum sem, id luctus metus. Nullam quam nunc, lobortis quis diam at, accumsan efficitur leo. Mauris efficitur erat et ligula euismod, eu interdum nunc luctus. Nam aliquet facilisis aliquet. Nunc sagittis enim sed sapien malesuada gravida. Curabitur nulla dui, vehicula eu laoreet non, imperdiet quis ligula. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus convallis tortor vestibulum nisi condimentum pretium. Pellentesque ut tincidunt quam. Duis accumsan ante in est consequat gravida. Fusce fringilla erat molestie diam tempor, at viverra turpis feugiat.
 					</p>
 					<Image src='https://fakeimg.pl/300x300/?text=crypto img' alt="crypto-img" />
+					<ThreeD
+						geo={new SphereGeometry(5, 100, 100, 5)}
+						mat={new MeshStandardMaterial({map: new TextureLoader().load("https://fakeimg.pl/300x300/?text=crypto img"), color: 0xFD8EBB })}
+						duration={16000}
+						yRot={0.02}
+						width={200}
+						height={200}
+					/>
 				</Description>
 
 			</Wrapper>
