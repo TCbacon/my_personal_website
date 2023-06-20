@@ -4,6 +4,9 @@ import { NavLinksContainer, LinksWrapper, LinkItem, Link, Marginer } from './Mob
 
 export function MobileNavLinks({ setMobileStock }) {
   const [isOpen, setOpen] = useState(false);
+  const [isOpenAnim, setOpenAnim] = useState(false);
+  const animSlideDurationInSec = 0.3;
+
 
   useEffect(() => {
     setMobileStock(isOpen);
@@ -16,12 +19,23 @@ export function MobileNavLinks({ setMobileStock }) {
     }
   }, [isOpen, setMobileStock]);
 
+  const handleToggle = () => {
+    if (!isOpen) {
+      setOpen(true);
+      setOpenAnim(true);
+    } else {
+      setOpenAnim(false);
+      setTimeout(() => {
+        setOpen(false);
+      }, animSlideDurationInSec * 1000);
+    }
+  };
 
   return (
     <NavLinksContainer>
-      <MenuToggle isOpen={isOpen} toggle={() => setOpen(!isOpen)} />
+      <MenuToggle isOpen={isOpen} toggle={() => handleToggle()} />
       {isOpen && (
-        <LinksWrapper>
+        <LinksWrapper isOpen={isOpenAnim} animSlideDurationInSec={animSlideDurationInSec}>
           <LinkItem>
             <Link href="/home"> Home</Link>
           </LinkItem>
