@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Wrapper, TextBox, ImageWrapper, Image, PutsellDesc, DisclaimerBox, VideoWrapper, TitleWrapper } from './SellPuts.styles';
-import { DeviceSize } from "../Responsive";
+import { DeviceSize, VideoSize } from "../Responsive";
 
 
 export const SellPuts = () => {
 
-    const [vidWidth, setVidWidth] = useState(window.innerWidth <= DeviceSize.tablet ? 300 : 600);
-    const [vidHeight, setVidHeight] = useState(window.innerWidth <= DeviceSize.tablet ? 250 : 400);
+    const [vidWidth, setVidWidth] = useState(window.innerWidth <= DeviceSize.tablet ? VideoSize.tabletWidth : VideoSize.desktopWidth);
+    const [vidHeight, setVidHeight] = useState(window.innerWidth <= DeviceSize.tablet ? VideoSize.tabletHeight : VideoSize.desktopHeight);
 
     const handleResizeVideo = () => {
-        setVidWidth(window.innerWidth <= DeviceSize.tablet ? 300 : 600);
-        setVidHeight(window.innerWidth <= DeviceSize.tablet ? 250 : 400);
+        setVidWidth(window.innerWidth <= DeviceSize.tablet ? VideoSize.tabletWidth : VideoSize.desktopWidth);
+        setVidHeight(window.innerWidth <= DeviceSize.tablet ? VideoSize.tabletHeight : VideoSize.desktopHeight);
     };
 
     //called once on mount
@@ -71,7 +71,7 @@ export const SellPuts = () => {
             <VideoWrapper>
                 <h1>Selling Puts Tutorial</h1>
                 <iframe title="Selling Puts Tutorial"
-                    src='https://fakeimg.pl/600x400/?text=video'
+                    src={`https://fakeimg.pl/${vidWidth}x${vidHeight}/?text=video`}
                     height={`${vidHeight}px`}
                     width={`${vidWidth}px`}
                     allow="fullscreen" />

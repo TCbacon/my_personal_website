@@ -12,3 +12,10 @@ export const PlotSize = {
   desktopWidth: 670,
   desktopHeight: 440,
 }
+
+export const VideoSize = {
+  tabletWidth: 300,
+  tabletHeight: 250,
+  desktopWidth: 600,
+  desktopHeight: 400,
+}

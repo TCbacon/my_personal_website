@@ -22,7 +22,7 @@ export const LinksWrapper = styled.ul`
   align-items: center;
   top: 65px;
   left: 0;
-  position: absolute;
+  position: fixed;
   border-radius: 20px;
   z-index: 99;
 
